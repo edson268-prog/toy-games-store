@@ -1,0 +1,32 @@
+.error {
+    margin: 0 0 20px;
+    color: #fff;
+    font-size: 15px;
+    background-color: #da6969;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.form-container{
+    border: #4B4949 2px solid;
+    border-radius: 5px;
+    padding: 1%;
+    display: table;
+    margin-left: 3%;
+}
+
+button {
+    height: auto;
+    width: auto;
+    padding: 10px;
+    color: #fff !important;
+    background-color: #f44336;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}

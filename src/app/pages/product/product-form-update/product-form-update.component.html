@@ -1,0 +1,110 @@
+<!-- <p>product-form-update works!</p> -->
+<div class="form-container">
+	<h1>Id de Producto: {{ paramId }}</h1>
+	<form (ngSubmit)="handleSubmitUpdate(form.value, form.valid)" #form="ngForm" novalidate autocomplete="off">
+		<!-- Detail {{ selectedProduct | json }}  -->
+		<!-- <div class="user" *ngIf="selectedProduct" >
+            <span>  {{ selectedProduct.name }} </span>
+       </div> -->
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Nombre:</mat-label>
+				<input
+					type="text"
+					name="name"
+					required
+					maxlength="50"
+					#name="ngModel"
+					[(ngModel)]="selectedProduct.name"
+					matInput
+					ngModel
+				/>
+			</mat-form-field>
+			<div class="error" *ngIf="name.errors?.['required'] && name.dirty">Nombre de producto requerido.</div>
+			<div class="error" *ngIf="name.errors?.['maxlength'] && name.dirty">El límite máximo es de 50 caracteres.</div>
+			<!-- {{ name.errors | json }} -->
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Descripción:</mat-label>
+				<input
+					type="text"
+					name="description"
+					maxlength="100"
+					#description="ngModel"
+					[(ngModel)]="selectedProduct.description"
+					matInput
+					ngModel
+				/>
+			</mat-form-field>
+			<div class="error" *ngIf="description.errors?.['maxlength'] && description.dirty">
+				El límite máximo es de 100 caracteres.
+			</div>
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Restriccion de Edad:</mat-label>
+				<input
+					type="number"
+					name="ageRestriction"
+					#ageRestriction="ngModel"
+					[(ngModel)]="selectedProduct.ageRestriction"
+					matInput
+					ngModel
+				/>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Compañia:</mat-label>
+				<input
+					type="text"
+					name="company"
+					required
+					maxlength="50"
+					#company="ngModel"
+					[(ngModel)]="selectedProduct.company"
+					matInput
+					ngModel
+				/>
+				<div class="error" *ngIf="company.errors?.['required'] && company.dirty">Nombre de compañia requerido.</div>
+				<div class="error" *ngIf="company.errors?.['maxlength'] && company.dirty">
+					El límite máximo es de 50 caracteres.
+				</div>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Precio:</mat-label>
+				<input
+					type="number"
+					required
+					#price="ngModel"
+					name="price"
+					[(ngModel)]="selectedProduct.price"
+					matInput
+					ngModel
+				/>
+				<div class="error" *ngIf="price.errors?.['required'] && price.dirty">Nombre de compañia requerido.</div>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Tipo de Producto:</mat-label>
+				<input
+					type="number"
+					required
+					#productTypeId="ngModel"
+					readonly="true"
+					name="productTypeId"
+					[(ngModel)]="selectedProduct.productTypeId"
+					matInput
+					ngModel
+				/>
+			</mat-form-field>
+		</div>
+		<!-- Data {{ form.value | json }}
+        <div> Valid: {{ form.valid | json}}</div> -->
+		<button type="submit" [disabled]="form.invalid" mat-button color="warn">Actualizar</button>
+	</form>
+</div>

@@ -1,0 +1,63 @@
+<div class="form-container">
+	<form
+		(ngSubmit)="handleSubmit(form.value, form.valid)"
+		#form="ngForm"
+		id="formAddProduct"
+		novalidate
+		autocomplete="off"
+	>
+		<!-- Detail {{ detail | json }} -->
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Nombre:</mat-label>
+				<input type="text" id="name" name="name" required maxlength="50" #name="ngModel" matInput ngModel />
+			</mat-form-field>
+			<div class="error" *ngIf="name.errors?.['required'] && name.dirty">Nombre de producto requerido.</div>
+			<div class="error" *ngIf="name.errors?.['maxlength'] && name.dirty">El límite máximo es de 50 caracteres.</div>
+			<!-- {{ name.errors | json }} -->
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Descripción:</mat-label>
+				<input
+					type="text"
+					id="description"
+					name="description"
+					maxlength="100"
+					#description="ngModel"
+					matInput
+					ngModel
+				/>
+			</mat-form-field>
+			<div class="error" *ngIf="description.errors?.['maxlength'] && description.dirty">
+				El límite máximo es de 100 caracteres.
+			</div>
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Restriccion de Edad:</mat-label>
+				<input type="number" id="ageRestriction" name="ageRestriction" #ageRestriction="ngModel" matInput ngModel />
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Compañia:</mat-label>
+				<input type="text" id="company" name="company" required maxlength="50" #company="ngModel" matInput ngModel />
+				<div class="error" *ngIf="company.errors?.['required'] && company.dirty">Nombre de compañia requerido.</div>
+				<div class="error" *ngIf="company.errors?.['maxlength'] && company.dirty">
+					El límite máximo es de 50 caracteres.
+				</div>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Precio:</mat-label>
+				<input type="number" id="price" required #price="ngModel" name="price" matInput ngModel />
+				<div class="error" *ngIf="price.errors?.['required'] && price.dirty">Nombre de compañia requerido.</div>
+			</mat-form-field>
+		</div>
+		<!-- Data {{ form.value | json }}
+        <div> Valid: {{ form.valid | json}}</div> -->
+		<button type="submit" [disabled]="form.invalid" mat-button color="warn">Registrar</button>
+	</form>
+</div>

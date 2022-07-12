@@ -1,0 +1,6 @@
+<!-- <p>product-register works!</p> -->
+<h1>Registrar Nuevo Producto</h1>
+<div>
+	<!-- <product-form [detail]="newProduct"> -->
+	<app-product-form [detail]="newProduct" (create)="onCreateProduct($event)"> </app-product-form>
+</div>
